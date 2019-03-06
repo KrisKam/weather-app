@@ -26,16 +26,27 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.headline}>Weather in Denver</Text>
-        <Text style={styles.weather}>Temperature:  {this.state.temperature}&deg; F</Text>
-        <Text style={styles.weather}>Humidity: {this.state.humidity}</Text>
-        <Text style={styles.weather}>Air Pressure: {this.state.airPressure}</Text>
-        <Text style={styles.weather}>Air Quality: {this.state.airQuality}</Text>
-        <AirQuality style={styles.weather} quality = {this.state.airQuality} />
-      </View>
-    );
+
+      if (this.state.temperature === null) {
+        return (
+          <View>
+            <Text>Waiting for Denver weather from AirVisual...</Text>
+          </View>
+        )
+      } else {
+
+        return (
+          <View style={styles.container}>
+            <Text style={styles.headline}>Weather in Denver</Text>
+            <Text style={styles.weather}>Temperature:  {this.state.temperature}&deg; F</Text>
+            <Text style={styles.weather}>Humidity: {this.state.humidity}</Text>
+            <Text style={styles.weather}>Air Pressure: {this.state.airPressure}</Text>
+            <Text style={styles.weather}>Air Quality: {this.state.airQuality}</Text>
+            <AirQuality style={styles.weather} quality = {this.state.airQuality} />
+          </View>
+        );
+
+      }
   }
 }
 
